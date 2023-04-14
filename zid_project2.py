@@ -382,7 +382,13 @@ def get_avg(df, col, year):
         0.032
 
     """
-    #<COMPLETE THIS PART>
+    df.sort_index(inplace=True)
+
+    df_re = df.loc[f"{year}", col]
+
+    sca = df_re.mean(axis=0, skipna=True)
+
+    return sca
 
 
 
@@ -427,7 +433,15 @@ def get_ew_rets(df, tickers):
 
 
     """
-    #<COMPLETE THIS PART>
+    df.sort_index(inplace=True)
+
+    df_rep = df.loc[:, tickers]
+
+    df_rep.dropna(axis=0, how='all', inplace=True)
+
+    ser = df_rep.mean(axis=1, skipna=True)
+
+    return ser
 
 
 
